@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useMotionReady } from "./useMotionReady";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -42,15 +41,13 @@ export function RevealGroup({
   children: ReactNode;
   className?: string;
 }) {
-  const motionReady = useMotionReady();
-
   return (
     <motion.div
       className={className}
-      variants={motionReady ? groupVariants : undefined}
-      initial={motionReady ? "hidden" : false}
-      whileInView={motionReady ? "visible" : undefined}
-      viewport={{ once: true, amount: 0.18 }}
+      variants={groupVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.24 }}
     >
       {children}
     </motion.div>
@@ -64,11 +61,5 @@ export function RevealItem({
   children: ReactNode;
   className?: string;
 }) {
-  const motionReady = useMotionReady();
-
-  return (
-    <motion.div className={className} variants={motionReady ? itemVariants : undefined}>
-      {children}
-    </motion.div>
-  );
+  return <motion.div className={className} variants={itemVariants}>{children}</motion.div>;
 }

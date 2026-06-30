@@ -4,6 +4,7 @@ type Project = {
   description: string;
   tags: string[];
   featured?: boolean;
+  visual?: "map" | "robot";
   links?: Array<{
     label: string;
     href: string;
@@ -43,6 +44,7 @@ export const profile = {
       type: "Research platform for urban transformation documentation",
       description:
         "A full-stack platform created with LKAB to document the urban transformation of Kiruna, Sweden, with React, Node.js, Express, MongoDB, REST APIs, authentication, interactive maps, ML integration, coordinated delivery, and exhibition deployment.",
+      visual: "map",
       tags: ["React", "Node.js", "Express", "MongoDB", "Maps", "REST API", "Machine Learning"],
       links: [
         {
@@ -56,6 +58,7 @@ export const profile = {
       type: "Master's thesis project",
       description:
         "A system for controlling a UR3e collaborative robot with HoloLens 2, Unity, ROS, hand gestures, motion, and voice commands through an augmented reality point-and-pick interface.",
+      visual: "robot",
       tags: ["HoloLens 2", "Unity", "ROS", "UR3e", "Robotics", "Augmented Reality", "C#"],
     },
     {

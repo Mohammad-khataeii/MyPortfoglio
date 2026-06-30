@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { useMotionReady } from "./useMotionReady";
 
 export function SectionReveal({
   children,
@@ -11,15 +10,13 @@ export function SectionReveal({
   children: ReactNode;
   className?: string;
 }) {
-  const motionReady = useMotionReady();
-
   return (
     <motion.div
       className={className}
-      initial={false}
-      whileInView={motionReady ? { opacity: 1, y: 0 } : undefined}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 32, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.24 }}
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>

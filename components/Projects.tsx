@@ -3,9 +3,15 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { Profile } from "@/data/profile";
 import { RevealGroup, RevealItem } from "./RevealGroup";
+import { ExplorerMapVisual, RobotArmVisual } from "./visuals/ProjectVisuals";
 
 export function Projects({ profile }: { profile: Profile }) {
   const reduceMotion = useReducedMotion();
+
+  const visuals = {
+    map: ExplorerMapVisual,
+    robot: RobotArmVisual,
+  } as const;
 
   return (
     <section className="section" id="projects">
@@ -28,12 +34,20 @@ export function Projects({ profile }: { profile: Profile }) {
               <motion.article
                 whileHover={reduceMotion ? {} : { y: -6, scale: 1.01 }}
                 transition={{ duration: 0.2 }}
-                className={`glass group rounded-[2rem] p-5 sm:p-6 ${project.featured ? "lg:col-span-2" : ""}`}
+                className={`glass group flex h-full flex-col rounded-[2rem] p-5 sm:p-6 ${project.featured ? "lg:col-span-2" : ""}`}
               >
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div>
+                {project.visual ? (
+                  <div className="mb-6 overflow-hidden rounded-[1.5rem] border border-white/8 bg-[linear-gradient(135deg,rgba(18,24,49,0.78),rgba(9,12,28,0.92))]">
+                    {(() => {
+                      const Visual = visuals[project.visual];
+                      return <Visual className="h-40 w-full opacity-95 sm:h-44" />;
+                    })()}
+                  </div>
+                ) : null}
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="space-y-3">
                     <p className="mono text-xs tracking-[0.2em] text-[var(--accent-2)] uppercase">{project.type}</p>
-                    <h3 className="mt-3 text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">{project.name}</h3>
+                    <h3 className="text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">{project.name}</h3>
                   </div>
                   {project.featured ? (
                     <span className="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-4 py-2 text-xs uppercase tracking-[0.2em] text-cyan-200">
@@ -52,7 +66,7 @@ export function Projects({ profile }: { profile: Profile }) {
                   ))}
                 </div>
                 {project.links?.length ? (
-                  <div className="mt-6 flex flex-wrap gap-3">
+                  <div className="mt-7 flex flex-wrap gap-3">
                     {project.links.map((link) => (
                       <a
                         key={link.href}

@@ -4,6 +4,7 @@ import { ArrowRight, Download, Mail, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Profile } from "@/data/profile";
 import { useMotionReady } from "./useMotionReady";
+import { SmartiTrainVisual } from "./visuals/ProjectVisuals";
 
 export function Hero({ profile }: { profile: Profile }) {
   const motionReady = useMotionReady();
@@ -88,6 +89,9 @@ export function Hero({ profile }: { profile: Profile }) {
               Manufacturing analytics platform for railway braking systems, spanning dashboards, SPC, predictive
               insights, root-cause tooling, RBAC, and quality monitoring.
             </p>
+            <div className="overflow-hidden rounded-[1.5rem] border border-white/8 bg-[linear-gradient(135deg,rgba(18,24,49,0.78),rgba(9,12,28,0.92))]">
+              <SmartiTrainVisual className="h-28 w-full opacity-90 sm:h-32" />
+            </div>
             <div className="space-y-3">
               {[
                 "Pipeline health: stable",
