@@ -10,7 +10,7 @@ export function Hero({ profile }: { profile: Profile }) {
 
   return (
     <section id="top" className="shell relative section pt-16 md:pt-20">
-      <div className="grid items-center gap-10 xl:grid-cols-[1.08fr_minmax(30rem,1fr)]">
+      <div className="grid items-center gap-8 lg:gap-10 xl:grid-cols-[1.02fr_minmax(28rem,1fr)]">
         <div>
           <motion.p
             initial={false}
@@ -24,7 +24,7 @@ export function Hero({ profile }: { profile: Profile }) {
             initial={false}
             animate={motionReady ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="max-w-4xl text-[clamp(2.9rem,11vw,4.8rem)] leading-[0.9] font-semibold tracking-[-0.07em] md:text-[clamp(4.8rem,8vw,7rem)]"
+            className="max-w-4xl text-[clamp(2.3rem,10vw,4.2rem)] leading-[0.9] font-semibold tracking-[-0.07em] sm:text-[clamp(2.7rem,11vw,4.5rem)] md:text-[clamp(4.2rem,8vw,7rem)]"
           >
             {profile.name}
           </motion.h1>
@@ -32,7 +32,7 @@ export function Hero({ profile }: { profile: Profile }) {
             initial={false}
             animate={motionReady ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.65, delay: 0.12 }}
-            className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted)] md:text-xl"
+            className="mt-5 max-w-3xl text-base leading-8 text-[var(--muted)] sm:text-lg md:text-xl"
           >
             {profile.hero.headline} {profile.hero.blurb}
           </motion.p>
@@ -40,19 +40,19 @@ export function Hero({ profile }: { profile: Profile }) {
             initial={false}
             animate={motionReady ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-8 grid gap-3 sm:flex sm:flex-wrap"
           >
-            <a href="#projects" className="cta-primary">
+            <a href="#projects" className="cta-primary w-full sm:w-auto">
               View projects <ArrowRight size={18} />
             </a>
             {profile.hasCv ? (
-              <a href={profile.cvPath} className="cta-secondary" download>
+              <a href={profile.cvPath} className="cta-secondary w-full sm:w-auto" download>
                 Download CV <Download size={18} />
               </a>
             ) : (
-              <span className="cta-tertiary cursor-not-allowed">CV unavailable</span>
+              <span className="cta-tertiary w-full cursor-not-allowed sm:w-auto">CV unavailable</span>
             )}
-            <a href={`mailto:${profile.email}`} className="cta-secondary">
+            <a href={`mailto:${profile.email}`} className="cta-secondary w-full sm:w-auto">
               Contact me <Mail size={18} />
             </a>
           </motion.div>
@@ -60,10 +60,10 @@ export function Hero({ profile }: { profile: Profile }) {
             initial={false}
             animate={motionReady ? { opacity: 1 } : undefined}
             transition={{ duration: 0.8, delay: 0.28 }}
-            className="mt-12 flex flex-wrap gap-3"
+            className="mt-10 flex flex-wrap gap-3"
           >
             {profile.hero.highlights.map((highlight) => (
-              <span key={highlight} className="glass rounded-full px-4 py-2 text-sm text-white/85">
+              <span key={highlight} className="glass rounded-full px-4 py-2 text-sm leading-6 text-white/85">
                 {highlight}
               </span>
             ))}
@@ -73,7 +73,7 @@ export function Hero({ profile }: { profile: Profile }) {
           initial={false}
           animate={motionReady ? { opacity: 1, x: 0 } : undefined}
           transition={{ duration: 0.75, delay: 0.18 }}
-          className="glass relative w-full overflow-hidden rounded-[2rem] p-5 sm:p-6 xl:ml-auto xl:max-w-none"
+          className="glass relative w-full overflow-hidden rounded-[2rem] p-5 sm:p-6 lg:max-w-[44rem] xl:ml-auto xl:max-w-none"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,243,255,0.12),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(143,109,255,0.18),transparent_35%)]" />
           <div className="relative space-y-5">
@@ -97,7 +97,7 @@ export function Hero({ profile }: { profile: Profile }) {
               ].map((line, index) => (
                 <div
                   key={line}
-                  className="grid grid-cols-[2rem_1fr] items-start gap-3 rounded-2xl border border-white/8 bg-white/4 px-4 py-3.5"
+                  className="grid grid-cols-[1.8rem_1fr] items-start gap-3 rounded-2xl border border-white/8 bg-white/4 px-4 py-3.5 sm:grid-cols-[2rem_1fr]"
                 >
                   <span className="mono pt-0.5 text-xs text-[var(--muted)]">0{index + 1}</span>
                   <span className="text-sm leading-6 text-white/92">{line}</span>

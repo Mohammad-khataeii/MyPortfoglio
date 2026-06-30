@@ -28,12 +28,12 @@ export function Projects({ profile }: { profile: Profile }) {
               <motion.article
                 whileHover={reduceMotion ? {} : { y: -6, scale: 1.01 }}
                 transition={{ duration: 0.2 }}
-                className={`glass group rounded-[2rem] p-6 ${project.featured ? "lg:col-span-2" : ""}`}
+                className={`glass group rounded-[2rem] p-5 sm:p-6 ${project.featured ? "lg:col-span-2" : ""}`}
               >
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <div>
                     <p className="mono text-xs tracking-[0.2em] text-[var(--accent-2)] uppercase">{project.type}</p>
-                    <h3 className="mt-3 text-3xl font-semibold tracking-[-0.05em]">{project.name}</h3>
+                    <h3 className="mt-3 text-2xl font-semibold tracking-[-0.05em] sm:text-3xl">{project.name}</h3>
                   </div>
                   {project.featured ? (
                     <span className="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-4 py-2 text-xs uppercase tracking-[0.2em] text-cyan-200">
@@ -41,7 +41,9 @@ export function Projects({ profile }: { profile: Profile }) {
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-5 max-w-3xl text-[0.98rem] leading-8 text-[var(--muted)]">{project.description}</p>
+                <p className="mt-5 max-w-3xl text-[0.95rem] leading-7 text-[var(--muted)] sm:text-[0.98rem] sm:leading-8">
+                  {project.description}
+                </p>
                 <div className="mt-6 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span key={tag} className="rounded-full border border-white/10 px-3 py-2 text-xs text-white/82">

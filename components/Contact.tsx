@@ -10,23 +10,23 @@ export function Contact({ profile }: { profile: Profile }) {
     <section className="section pb-20" id="contact">
       <RevealGroup className="shell">
         <RevealItem>
-          <div className="glass rounded-[2rem] p-6 md:p-10">
+          <div className="glass rounded-[2rem] p-5 sm:p-6 md:p-10">
             <p className="eyebrow">Contact</p>
             <h2 className="section-title">Open to ambitious engineering work and meaningful collaboration.</h2>
             <p className="section-copy">{profile.contact}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href={`mailto:${profile.email}`} className="cta-primary">
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+              <a href={`mailto:${profile.email}`} className="cta-primary w-full sm:w-auto">
                 Email me <Mail size={18} />
               </a>
               {profile.hasCv ? (
-                <a href={profile.cvPath} className="cta-secondary" download>
+                <a href={profile.cvPath} className="cta-secondary w-full sm:w-auto" download>
                   Download CV <Download size={18} />
                 </a>
               ) : (
-                <span className="cta-tertiary cursor-not-allowed">Add public/cv.pdf</span>
+                <span className="cta-tertiary w-full cursor-not-allowed sm:w-auto">Add public/cv.pdf</span>
               )}
             </div>
-            <div className="mt-8 flex flex-wrap gap-3 text-sm text-[var(--muted)]">
+            <div className="mt-8 flex flex-col gap-2 text-sm text-[var(--muted)] sm:flex-row sm:flex-wrap sm:gap-3">
               <span>{profile.email}</span>
               <span className="hidden sm:inline">•</span>
               <span>{profile.location}</span>

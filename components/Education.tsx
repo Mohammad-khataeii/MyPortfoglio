@@ -14,9 +14,9 @@ export function Education({ profile }: { profile: Profile }) {
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {profile.education.map((item) => (
             <RevealItem key={`${item.degree}-${item.school}`}>
-              <article className="glass rounded-[1.75rem] p-6">
+              <article className="glass rounded-[1.75rem] p-5 sm:p-6">
                 <p className="mono text-xs tracking-[0.16em] text-[var(--accent-2)] uppercase">{item.period}</p>
-                <h3 className="mt-4 text-2xl font-semibold tracking-[-0.04em]">{item.degree}</h3>
+                <h3 className="mt-4 text-xl font-semibold tracking-[-0.04em] sm:text-2xl">{item.degree}</h3>
                 <p className="mt-2 text-white/82">{item.school}</p>
                 <p className="mt-1 text-sm text-[var(--muted)]">{item.location}</p>
                 {item.thesis ? <p className="mt-5 text-sm leading-7 text-[var(--muted)]">{item.thesis}</p> : null}
